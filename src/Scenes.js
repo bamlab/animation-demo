@@ -30,14 +30,19 @@ const Scenes = () => (
         key="home"
         type={ActionConst.RESET}
         component={Pages.Home}
-        renderTitle={LogoTitle}
+        title="Animation demo"
         initial
       />
       <Scene
-        key="infos"
-        component={Pages.Infos}
-        title="Infos"
+        key="button"
+        component={Pages.Button}
+        title="Button"
       />
+      <Scene
+        key="pageTransition"
+        component={Pages.PageTransition}
+        title="Page Transition"
+        />
     </Scene>
   </Router>
 );
