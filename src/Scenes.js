@@ -42,7 +42,18 @@ const Scenes = () => (
         key="pageTransition"
         component={Pages.PageTransition}
         title="Page Transition"
-        />
+      />
+      <Scene
+        key="scrollAnimation"
+        component={Pages.ScrollAnimation}
+        title="Scroll Animation"
+      />
+      <Scene
+        key="scrollAnimatedTvShow"
+        component={Pages.ScrollAnimatedTvShow}
+        title="Scroll Animation Tv Show"
+        hideNavBar
+      />
     </Scene>
   </Router>
 );

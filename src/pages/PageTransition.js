@@ -7,7 +7,6 @@ import { Page, TvShowListItem } from 'animationDemo/src/components';
 
 import data from '../assets/tvShowsData';
 
-console.log(data);
 const styles = StyleSheet.create({
   page: {
     backgroundColor: '#90a4ae',

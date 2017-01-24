@@ -128,6 +128,9 @@ class TvShowListItem extends Component {
 
   onPress() {
     this.props.onPress();
+    if (this.props.noAnimation) {
+      return;
+    }
 
     if (this.state.opened) {
       this.refs.nextEpisode.fadeOutLeft();
@@ -197,6 +200,7 @@ TvShowListItem.propTypes = {
   ]),
   onPress: PropTypes.func,
   opened: PropTypes.bool,
+  noAnimation: PropTypes.bool,
 };
 
 TvShowListItem.defaultProps = {
