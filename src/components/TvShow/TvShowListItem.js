@@ -66,13 +66,11 @@ const getStyles = (opened, left) => StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       padding: 20,
+      opacity: 0,
     },
     closed: {
       position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
+      opacity: 0,
     },
   }),
   descriptionText: {
@@ -80,14 +78,19 @@ const getStyles = (opened, left) => StyleSheet.create({
     textAlign: 'center',
     maxHeight: height / 3,
   },
-  animatableNextEpisode: {
-    flex: 1,
-    zIndex: 1,
-    position: opened ? undefined : 'absolute',
-    right: 0,
-    bottom: 0,
-    top: 0
-  },
+  animatableNextEpisode: selectOpened(opened, {
+    opened: {
+      flex: 1,
+      zIndex: 1,
+    },
+    closed: {
+      position: 'absolute',
+      opacity: 0,
+      right: 0,
+      bottom: 0,
+      top: 0
+    }
+  }),
 });
 
 const colors = [
@@ -109,21 +112,14 @@ class TvShowListItem extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      openend: false,
-      exitEnded: true
-    };
+    this.state = { opened: false };
 
     this.onPress = this.onPress.bind(this);
   }
 
   componentWillUpdate() {
     const animation = LayoutAnimation.create(500, 'easeInEaseOut', 'opacity');
-    LayoutAnimation.configureNext(animation, () => {
-      this.setState({
-        exitEnded: true,
-      });
-    });
+    LayoutAnimation.configureNext(animation);
   }
 
   onPress() {
@@ -135,18 +131,22 @@ class TvShowListItem extends Component {
     if (this.state.opened) {
       this.refs.nextEpisode.fadeOutLeft();
       this.refs.description.fadeOutDownBig();
-      return  this.setState({opened: false, windowPos: null, exitEnded: false});
+      return  this.setState({opened: false, windowPos: null});
     }
-    this.setState({ opened: true });
-    this.refs.container.measureInWindow((x, y) => this.setState({
-      windowPos: { x, y },
-    }));
-  };
+    this.refs.container.measureInWindow((x, y) => {
+      this.refs.nextEpisode.slideInLeft();
+      setTimeout(() => this.refs.description.fadeInUpBig(), 400);
+      this.setState({
+        opened: true,
+        windowPos: { x, y },
+      });
+    });
+  }
 
 
   render() {
     const props = this.props;
-    const { opened, exitEnded } = this.state;
+    const { opened } = this.state;
     const styles = getStyles(opened, (props.index % 2 === 0));
 
     const containerPos = this.state.windowPos ? {
@@ -164,28 +164,22 @@ class TvShowListItem extends Component {
               onPress={this.onPress}
               noShadow={opened}
             />
-            { (opened || ! exitEnded) && (
-              <Animatable.View
-                animation="slideInLeft"
-                style={styles.animatableNextEpisode}
-                duration={800}
-                ref="nextEpisode"
-              >
-                <NextEpisode tvShow={this.props.tvShow}/>
-              </Animatable.View>
-            )}
-          </View>
-          { (opened || ! exitEnded) && (
             <Animatable.View
-              animation="fadeInUpBig"
-              style={styles.description}
+              style={styles.animatableNextEpisode}
               duration={800}
-              ref="description"
-              delay={400}
+              ref="nextEpisode"
             >
-              <Text style={styles.descriptionText}>{this.props.tvShow.overview}</Text>
+              <NextEpisode tvShow={this.props.tvShow}/>
             </Animatable.View>
-          )}
+          </View>
+          <Animatable.View
+            style={styles.description}
+            duration={800}
+            ref="description"
+            delay={400}
+          >
+            <Text style={styles.descriptionText}>{this.props.tvShow.overview}</Text>
+          </Animatable.View>
         </View>
       </TouchableWithoutFeedback>
     );

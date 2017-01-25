@@ -8,8 +8,10 @@ import {
   StatusBar,
   } from 'react-native';
 import * as Animatable from 'react-native-animatable';
+import { Actions } from 'react-native-router-flux';
 
 import NextEpisode from '../components/TvShow/NextEpisode';
+import { Button } from 'animationDemo/src/components';
 
 
 import HeaderImageScrollView, { TriggeringView } from 'react-native-image-header-scroll-view';
@@ -134,6 +136,7 @@ class TvShow extends Component {
             <Text style={styles.sectionTitle}>Overview</Text>
             <Text style={styles.sectionContent}>{tvShowContent.overview}</Text>
           </View>
+          <Button onPress={Actions.pop}>Back</Button>
           <View style={styles.section}>
             <NextEpisode tvShow={tvShowContent} />
           </View>

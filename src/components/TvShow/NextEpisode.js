@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     color: appStyle.colors.primary,
     fontSize: appStyle.font.fontSize.huge,
     maxWidth: 140,
+    backgroundColor: 'transparent',
   },
 });
 
