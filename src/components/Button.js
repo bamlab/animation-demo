@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
   textWhite: {
     textAlign: 'center',
     color: appStyle.colors.lightText,
+    backgroundColor: 'transparent',
   }
 });
 
