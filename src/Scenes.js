@@ -54,6 +54,11 @@ const Scenes = () => (
         title="Scroll Animation Tv Show"
         hideNavBar
       />
+      <Scene
+        key="svg"
+        component={Pages.Svg}
+        title="SVG"
+      />
     </Scene>
   </Router>
 );

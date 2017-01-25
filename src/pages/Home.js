@@ -23,6 +23,7 @@ const Home = () => (
       <Button onPress={Actions.button} style={styles.button}>Button</Button>
       <Button onPress={Actions.pageTransition} style={styles.button}>Page Transition</Button>
       <Button onPress={Actions.scrollAnimation} style={styles.button}>Scroll Animation</Button>
+      <Button onPress={Actions.svg} style={styles.button}>SVG</Button>
     </View>
   </Page>
 );

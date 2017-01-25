@@ -12,6 +12,7 @@
     "react-native-animatable": "^1.1.0",
     "react-native-image-header-scroll-view": "^0.2.1",
     "react-native-router-flux": "^3.37.0",
+    "react-native-svg": "^5.1.4",
     "react-native-vector-icons": "^4.0.0"
   },
   "devDependencies": {
