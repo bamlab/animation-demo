@@ -5,24 +5,7 @@ import { Button } from 'animationDemo/src/components';
 
 
 import { Components } from 'exponent';
-const {
-  Svg: {
-    Circle,
-    Ellipse,
-    G,
-    LinearGradient,
-    RadialGradient,
-    Line,
-    Path,
-    Polygon,
-    Polyline,
-    Rect,
-    Symbol,
-    Use,
-    Defs,
-    Stop
-  }
-} = Components;
+const { Svg: { Line } } = Components;
 
 const { Svg } = Components;
 
@@ -53,29 +36,21 @@ class SvgPage extends React.Component {
   }
 
   onValueChange({ value }) {
-    this.g1.setNativeProps({
-      rotate: `${iterpolate(value, 0, 45)}`,
+    this.line1.setNativeProps({
+      y1:  `${iterpolate(value, 24, 9)}`,
+      y2:  `${iterpolate(value, 24, 41)}`,
     });
-    this.g2.setNativeProps({
-      rotate: `${iterpolate(value, 0, 45)}`,
+    this.line2.setNativeProps({
+      y1:  `${iterpolate(value, 14, 9)}`,
+      y2:  `${iterpolate(value, 14, 41)}`,
     });
-    this.g3.setNativeProps({
-      rotate: `${iterpolate(value, 0, -45)}`,
-    });
-    console.log(`${iterpolate(value, 0, 45)}`);
-    this.rect1.setNativeProps({
-      y: `${iterpolate(value, 24, 25)}`,
-    });
-    this.rect2.setNativeProps({
-      y: `${iterpolate(value, 14, 25)}`,
-    });
-    this.rect3.setNativeProps({
-      y: `${iterpolate(value, 33, 25)}`,
+    this.line3.setNativeProps({
+      y1:  `${iterpolate(value, 33, 41)}`,
+      y2:  `${iterpolate(value, 33, 9)}`,
     });
   }
 
   toggle() {
-    console.log('toggle');
     if (this.state.menu) {
       Animated.timing(  // Uses easing functions
         this.state.value,  // The value to drive
@@ -97,27 +72,12 @@ class SvgPage extends React.Component {
         <Button onPress={() => this.toggle()}>Launch</Button>
           <View style={styles.container}>
             <Svg width={50} height={50} >
-              <G
-                rotate="0"
-                origin="25, 25"
-                ref={ref => this.g1 = ref}
-              >
-                <Line x="9" y="24" width="32" height="3" ref={ref => this.rect1 = ref} />
-              </G>
-              <G
-                rotate="0"
-                origin="25, 25"
-                ref={ref => this.g2 = ref}
-              >
-                <Line x="9" y="14" width="32" height="3" ref={ref => this.rect2 = ref} />
-              </G>
-              <G
-                rotate="0"
-                origin="25, 25"
-                ref={ref => this.g3 = ref}
-              >
-                <Line x="9" y="33" width="32" height="3" ref={ref => this.rect3 = ref} />
-              </G>
+              <Line x1="9" y1="24" x2="41" y2="24" strokeWidth="3" stroke="black"
+                    ref={ref => this.line1 = ref} />
+              <Line x1="9" y1="14" x2="41" y2="14" strokeWidth="3" stroke="black"
+                    ref={ref => this.line2 = ref} />
+              <Line x1="9" y1="33" x2="41" y2="33" strokeWidth="3" stroke="black"
+                    ref={ref => this.line3 = ref} />
             </Svg>
           </View>
       </Page>
