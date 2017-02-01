@@ -3,6 +3,7 @@ Animation Demo
 
 Some animation demo on react-native
 
+Downloadable on exponent : exp.host/@nhacsam/react-native-animation-demo
 
 
 ### Buttons
@@ -31,3 +32,8 @@ Some animation demo on react-native
 
 ![Svg animation](./svg.gif)
 
+
+## To do
+
+ * Fix page animation on Android
+ * Improve scrollAnimation performances
