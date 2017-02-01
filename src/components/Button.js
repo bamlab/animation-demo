@@ -3,7 +3,7 @@ import { TouchableOpacity, Text, StyleSheet, View, ActivityIndicator, LayoutAnim
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import appStyle from 'animationDemo/src/appStyle';
-// import * as Animatable from 'react-native-animatable'; // step 2
+import * as Animatable from 'react-native-animatable'; // step 2
 
 const styles = StyleSheet.create({
   container: {
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     height: appStyle.dimensions.largeButtonHeight,
     backgroundColor: appStyle.colors.lightText,
     borderRadius: 30,
-//    overflow: 'hidden', // step 1
+    overflow: 'hidden', // step 1
   },
   buttonIdle: {
     height: appStyle.dimensions.touchableHeight,
@@ -82,7 +82,7 @@ class Button extends Component {
     this.setState({status: nextStatus});
 
     this.restoreAfterTimer(nextStatus);
-    // this.launchAnimation(nextStatus); // step 2
+    this.launchAnimation(nextStatus); // step 2
   }
 
   restoreAfterTimer(fromStatus) {
@@ -94,7 +94,6 @@ class Button extends Component {
     }, 3000);
   }
 
-  /* step 2
   launchAnimation(status) {
     if (status === this.status.ERROR) {
       this.refs.button.rotate(300);
@@ -104,11 +103,10 @@ class Button extends Component {
       this.refs.button.rotate(300);
     }
   }
-  */
 
 
   componentWillUpdate() {
-    // LayoutAnimation.easeInEaseOut(); // step 1
+    LayoutAnimation.easeInEaseOut(); // step 1
   }
 
   getContent() {
@@ -153,9 +151,9 @@ class Button extends Component {
     // step 2 : Animatable.View
     return (
       <TouchableOpacity onPress={props.onPress} style={styles.container}>
-        <View style={[styles.button, buttonStyle, props.style]} ref="button">
+        <Animatable.View style={[styles.button, buttonStyle, props.style]} ref="button">
           { this.getContent()}
-        </View>
+        </Animatable.View>
       </TouchableOpacity>
     );
   }
