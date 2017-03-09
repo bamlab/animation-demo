@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { Page, Button } from 'animationDemo/src/components';
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

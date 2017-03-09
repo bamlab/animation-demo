@@ -27,12 +27,14 @@ const getStyles = (opened, left) => StyleSheet.create({
       width: Dimensions.get('window').width,
       position: 'relative',
       zIndex: 1,
+      marginHorizontal: 0,
     },
     closed: {
       flex: 1,
       alignItems: 'stretch',
       height: 250,
       justifyContent: 'center',
+      marginHorizontal: 25,
     },
   }),
   title: selectOpened(opened, {

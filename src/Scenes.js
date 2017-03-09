@@ -41,26 +41,4 @@ export const Navigator = StackNavigator(
   },
 );
 
-class Scenes extends Component {
-  handleBackPress = () => {
-    if (this.navigation && this.navigation.state.routes.length > 1) {
-      this.navigation.goBack();
-      return true;
-    }
-    return false;
-  };
-
-  componentDidMount() {
-    BackAndroid.addEventListener('hardwareBackPress', this.handleBackPress);
-  }
-
-  componentWillUnmount() {
-    BackAndroid.removeEventListener('hardwareBackPress', this.handleBackPress);
-  }
-
-  render() {
-    return <Navigator ref={navigation => this.navigation = navigation} />;
-  }
-}
-
-export default Scenes;
+export default Navigator;

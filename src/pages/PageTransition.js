@@ -45,6 +45,7 @@ class PageTransition extends Component {
   }
 
   animate(out, currentId) {
+    return;
     for (let rowId in this.listItems) {
       if (rowId === currentId) {
         continue;
@@ -64,7 +65,7 @@ class PageTransition extends Component {
     const { active } = this.state;
 
     return (
-      <Page noMargin={active} backgroundColor="#37474f">
+      <Page noMargin backgroundColor="#37474f">
         <ListView
           ref="list"
           dataSource={this.state.dataSource}

@@ -13,7 +13,6 @@ import NextEpisode from '../components/TvShow/NextEpisode';
 import { Button } from 'animationDemo/src/components';
 import { CardStack } from 'react-navigation';
 
-
 import HeaderImageScrollView, { TriggeringView } from 'react-native-image-header-scroll-view';
 
 const MIN_HEIGHT = CardStack.Header.HEIGHT;

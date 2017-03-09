@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     minHeight: appStyle.dimensions.touchableHeight * 1.3,
     marginVertical: appStyle.margins.inner,
+    minWidth: 2*appStyle.dimensions.largeButtonHeight,
   },
   button: {
     alignSelf: 'stretch',
@@ -26,13 +27,16 @@ const styles = StyleSheet.create({
     minWidth: appStyle.dimensions.largeButtonWidth,
   },
   buttonFetching: {
+    alignSelf: 'center',
     width: appStyle.dimensions.largeButtonHeight,
   },
   buttonError: {
+    alignSelf: 'center',
     backgroundColor: '#f44336',
     width: appStyle.dimensions.largeButtonHeight,
   },
   buttonSuccess: {
+    alignSelf: 'center',
     backgroundColor: '#4caf50',
     width: appStyle.dimensions.largeButtonHeight,
   },
