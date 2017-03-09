@@ -16,6 +16,9 @@ export const Navigator = StackNavigator(
     pageTransition: {
       screen: Pages.PageTransition,
     },
+    heart: {
+      screen: Pages.Heart,
+    },
     scrollAnimation: {
       screen: Pages.ScrollAnimation,
     },

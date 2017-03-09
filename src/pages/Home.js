@@ -21,6 +21,7 @@ const Home = (props) => (
     <View style={styles.container}>
       <Button onPress={() => props.navigation.navigate('button')} style={styles.button}>Button</Button>
       <Button onPress={() => props.navigation.navigate('pageTransition')} style={styles.button}>Page Transition</Button>
+      <Button onPress={() => props.navigation.navigate('heart')} style={styles.button}>Heart</Button>
       <Button onPress={() => props.navigation.navigate('scrollAnimation')} style={styles.button}>Scroll Animation</Button>
       <Button onPress={() => props.navigation.navigate('svg')} style={styles.button}>SVG</Button>
     </View>

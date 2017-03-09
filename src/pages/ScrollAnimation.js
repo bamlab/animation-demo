@@ -23,7 +23,7 @@ class ScrollAnimation extends Component {
 
   render() {
     return (
-      <Page backgroundColor="#37474f">
+      <Page noMargin backgroundColor="#37474f">
         <ListView
           dataSource={this.state.dataSource}
           renderRow={(tvShow, sectionID, rowID) => (
