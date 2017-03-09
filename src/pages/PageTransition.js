@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet, ListView, ActivityIndicator, View } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import * as Animatable from 'react-native-animatable';
 
 import { Page, TvShowListItem } from 'animationDemo/src/components';
@@ -16,6 +15,10 @@ const styles = StyleSheet.create({
 });
 
 class PageTransition extends Component {
+
+  static navigationOptions = {
+    title: 'Page Transition',
+  };
 
   constructor() {
     super();

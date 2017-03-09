@@ -8,16 +8,15 @@ import {
   StatusBar,
   } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import { Actions } from 'react-native-router-flux';
 
 import NextEpisode from '../components/TvShow/NextEpisode';
 import { Button } from 'animationDemo/src/components';
-import { NavigationBar } from '@exponent/ex-navigation';
+import { CardStack } from 'react-navigation';
 
 
 import HeaderImageScrollView, { TriggeringView } from 'react-native-image-header-scroll-view';
 
-const MIN_HEIGHT = NavigationBar.DEFAULT_HEIGHT;
+const MIN_HEIGHT = CardStack.Header.HEIGHT;
 const MAX_HEIGHT = 250;
 
 const styles = StyleSheet.create({
@@ -96,8 +95,19 @@ class TvShow extends Component {
     this.state = { showNavTitle: false };
   }
 
+  static navigationOptions = {
+    header: (navigation, defaultHeader) => ({
+      ...defaultHeader,
+      style: {
+        backgroundColor: 'transparent',
+        position: 'absolute',
+        top: 0,
+      }
+    }),
+  };
+
   render() {
-    const { tvShowContent } = this.props;
+    const { tvShowContent } = this.props.navigation.state.params;
     return (
       <View style={{ flex: 1 }}>
         <StatusBar barStyle="light-content" />
@@ -137,7 +147,6 @@ class TvShow extends Component {
             <Text style={styles.sectionTitle}>Overview</Text>
             <Text style={styles.sectionContent}>{tvShowContent.overview}</Text>
           </View>
-          <Button onPress={Actions.pop}>Back</Button>
           <View style={styles.section}>
             <NextEpisode tvShow={tvShowContent} />
           </View>

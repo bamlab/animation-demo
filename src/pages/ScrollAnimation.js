@@ -1,21 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet, ListView, ActivityIndicator, View } from 'react-native';
-import { Actions } from 'react-native-router-flux';
-import * as Animatable from 'react-native-animatable';
 
 import { Page, TvShowListItem } from 'animationDemo/src/components';
 
 import data from '../assets/tvShowsData';
 
-const styles = StyleSheet.create({
-  page: {
-    backgroundColor: '#90a4ae',
-    flex: 1,
-    justifyContent: 'center',
-  },
-});
-
 class ScrollAnimation extends Component {
+
+  static navigationOptions = {
+    title: 'Scroll Animation',
+  };
 
   constructor() {
     super();
@@ -37,7 +31,7 @@ class ScrollAnimation extends Component {
               <TvShowListItem
                 tvShow={tvShow} index={rowID}
                 noAnimation
-                onPress={() => Actions.scrollAnimatedTvShow({ tvShowContent: tvShow })}
+                onPress={() => this.props.navigation.navigate('scrollAnimatedTvShow', { tvShowContent: tvShow })}
               />
             </View>
           )}

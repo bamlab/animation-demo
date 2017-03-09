@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 
 import { Page, Button } from 'animationDemo/src/components';
 
@@ -13,6 +12,10 @@ const styles = StyleSheet.create({
 });
 
 class ButtonPage extends React.Component {
+
+  static navigationOptions = {
+    title: 'Button',
+  };
 
   constructor(props) {
     super(props);

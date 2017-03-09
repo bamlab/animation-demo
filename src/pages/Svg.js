@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View, Animated } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import { Button } from 'animationDemo/src/components';
 
 
@@ -8,8 +7,6 @@ import { Components } from 'exponent';
 const { Svg: { Line } } = Components;
 
 const { Svg } = Components;
-
-import appStyle from 'animationDemo/src/appStyle';
 
 import { Page } from 'animationDemo/src/components';
 
@@ -25,6 +22,10 @@ const iterpolate = (value, from, to) => (from + value * (to - from));
 
 class SvgPage extends React.Component {
 
+  static navigationOptions = {
+    title: 'SVG Animation',
+  };
+
   constructor() {
     super();
     this.state = {
@@ -32,7 +33,7 @@ class SvgPage extends React.Component {
       menu: true,
     };
     this.state.value.addListener(this.onValueChange.bind(this));
-
+    this.mounted = false;
   }
 
   onValueChange({ value }) {
@@ -49,8 +50,15 @@ class SvgPage extends React.Component {
       y2:  `${iterpolate(value, 33, 9)}`,
     });
   }
+  componentDidMount() {
+    this.mounted = true;
+  }
 
   toggle() {
+    if (!this.mounted) {
+      return;
+    }
+
     if (this.state.menu) {
       Animated.timing(  // Uses easing functions
         this.state.value,  // The value to drive

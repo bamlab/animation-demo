@@ -1,8 +1,8 @@
 {
-  "exponentServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "exponentServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "exponentServerPort": 19001,
+  "packagerPort": 19002,
+  "packagerPid": 58232,
+  "exponentServerNgrokUrl": "https://8t-4r2.nhacsam.animationdemo.exp.direct",
+  "packagerNgrokUrl": "https://packager.8t-4r2.nhacsam.animationdemo.exp.direct",
+  "ngrokPid": 58271
 }

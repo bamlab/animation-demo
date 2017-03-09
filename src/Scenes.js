@@ -1,65 +1,66 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import { Scene, Router, ActionConst } from 'react-native-router-flux';
+import React, { Component } from 'react';
+import { BackAndroid } from 'react-native';
+import { StackNavigator, addNavigationHelpers } from 'react-navigation';
+import appStyle from './appStyle';
 
-import * as Pages from 'animationDemo/src/pages';
-import { LogoTitle } from 'animationDemo/src/components';
-import backChevron from 'animationDemo/src/assets/back_chevron.png';
+import * as Pages from './pages';
 
-import appStyle from 'animationDemo/src/appStyle';
-
-const styles = StyleSheet.create({
-  header: {
-    backgroundColor: appStyle.colors.primary,
-    borderBottomWidth: 0,
+export const Navigator = StackNavigator(
+  {
+    home: {
+      screen: Pages.Home,
+    },
+    button: {
+      screen: Pages.Button,
+    },
+    pageTransition: {
+      screen: Pages.PageTransition,
+    },
+    scrollAnimation: {
+      screen: Pages.ScrollAnimation,
+    },
+    scrollAnimatedTvShow: {
+      screen: Pages.ScrollAnimatedTvShow,
+    },
+    svg: {
+      screen: Pages.Svg,
+    },
   },
-  title: {
-    color: appStyle.colors.lightText,
+  {
+    initialRouteName: 'home',
+    headerMode: 'screen',
+    navigationOptions: {
+      header: {
+        tintColor: appStyle.colors.lightText,
+        style: {
+          backgroundColor: appStyle.colors.primary,
+          borderBottomWidth: 0,
+        },
+      },
+    },
   },
-});
-
-const Scenes = () => (
-  <Router>
-    <Scene
-      key="root"
-      titleStyle={styles.title}
-      navigationBarStyle={styles.header}
-      backButtonImage={backChevron}
-    >
-      <Scene
-        key="home"
-        type={ActionConst.RESET}
-        component={Pages.Home}
-        title="Animation demo"
-        initial
-      />
-      <Scene
-        key="button"
-        component={Pages.Button}
-        title="Button"
-      />
-      <Scene
-        key="pageTransition"
-        component={Pages.PageTransition}
-        title="Page Transition"
-      />
-      <Scene
-        key="scrollAnimation"
-        component={Pages.ScrollAnimation}
-        title="Scroll Animation"
-      />
-      <Scene
-        key="scrollAnimatedTvShow"
-        component={Pages.ScrollAnimatedTvShow}
-        navigationBarStyle={{ backgroundColor: 'transparent' }}
-      />
-      <Scene
-        key="svg"
-        component={Pages.Svg}
-        title="SVG"
-      />
-    </Scene>
-  </Router>
 );
+
+class Scenes extends Component {
+  handleBackPress = () => {
+    if (this.navigation && this.navigation.state.routes.length > 1) {
+      this.navigation.goBack();
+      return true;
+    }
+    return false;
+  };
+
+  componentDidMount() {
+    BackAndroid.addEventListener('hardwareBackPress', this.handleBackPress);
+  }
+
+  componentWillUnmount() {
+    BackAndroid.removeEventListener('hardwareBackPress', this.handleBackPress);
+  }
+
+  render() {
+    return <Navigator ref={navigation => this.navigation = navigation} />;
+  }
+}
 
 export default Scenes;
