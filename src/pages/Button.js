@@ -71,7 +71,6 @@ class ButtonPage extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <Page backgroundColor="#37474f">
         <View style={styles.container}>

@@ -12,11 +12,12 @@ import { Actions } from 'react-native-router-flux';
 
 import NextEpisode from '../components/TvShow/NextEpisode';
 import { Button } from 'animationDemo/src/components';
+import { NavigationBar } from '@exponent/ex-navigation';
 
 
 import HeaderImageScrollView, { TriggeringView } from 'react-native-image-header-scroll-view';
 
-const MIN_HEIGHT = 58;
+const MIN_HEIGHT = NavigationBar.DEFAULT_HEIGHT;
 const MAX_HEIGHT = 250;
 
 const styles = StyleSheet.create({

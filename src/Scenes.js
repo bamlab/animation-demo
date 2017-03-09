@@ -51,8 +51,7 @@ const Scenes = () => (
       <Scene
         key="scrollAnimatedTvShow"
         component={Pages.ScrollAnimatedTvShow}
-        title="Scroll Animation Tv Show"
-        hideNavBar
+        navigationBarStyle={{ backgroundColor: 'transparent' }}
       />
       <Scene
         key="svg"
