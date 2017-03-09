@@ -18,6 +18,11 @@ Downloadable on exponent : exp.host/@nhacsam/react-native-animation-demo
 
 ![Page animation](./readmeAssets/tvShowPage.gif)
 
+### Bouncing Heart
+
+[Component](https://github.com/bamlab/animation-demo/blob/master/src/pages/Heart.js)
+
+![Page animation](./readmeAssets/heart.gif)
 
 ### Scroll Animation
 
@@ -33,7 +38,3 @@ Downloadable on exponent : exp.host/@nhacsam/react-native-animation-demo
 ![Svg animation](./readmeAssets/svg.gif)
 
 
-## To do
-
- * Fix page animation on Android
- * Improve scrollAnimation performances
